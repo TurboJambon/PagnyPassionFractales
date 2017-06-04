@@ -6,11 +6,13 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 16:14:33 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/01 18:13:54 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/04 20:24:26 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+#include <stdio.h>
 
 int		is_infinite(t_cplx z, t_cplx c)
 {
@@ -27,48 +29,99 @@ int		is_infinite(t_cplx z, t_cplx c)
 	return (-1);
 }
 
-void	ft_mendelbrot(t_env *e, float min, float max)
+int		is_dchirol(t_cplx z, t_cplx c)
+{
+	int	i;
+
+	i = 0;
+	while (i < ITER_MAX)
+	{
+		if ()
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+void	ft_mendelbrot(t_env *e, t_pnt min, t_pnt max)
 {
 	float	step;
+	float	tmp;
+	int 	x;
+	int 	y;
+	int		color;
+
+	step = (max.x - min.x) / WINX;
+	tmp = min.x;
+	y = 0;
+	while (min.y < max.y)
+	{
+		min.x = tmp;
+		x = 0;
+		while (min.x < max.x)
+		{
+			if ((color = is_infinite(cplx_new(0, 0),
+				cplx_new(min.x, min.y))) >= 0)
+				mlx_pixel_put(e->image, e->win, x, y, color);
+			min.x += step;
+			x++;
+		}
+		y++;
+		min.y += step;
+	}
+}
+
+void	ft_dchirol(t_env *e, t_pnt min, t_pnt max)
+{
+	float	step;
+	float	tmp;
 	float	x;
 	float	y;
 	int		color;
 
-	step = (max - min) / WINX;
+	step = (max.x - min.x) / WINX;
+	tmp = min.x;
 	y = 0;
-	while (y < WINY)
+	while (min.y < max.y)
 	{
 		x = 0;
-		while (x < WINX)
+		min.x = tmp;
+		while (min.x < max.x)
 		{
-			if ((color = is_infinite(cplx_new(0, 0),
-				cplx_new(min + (step * x), min + (step * y)))) >= 0)
-				mlx_pixel_put(e->image, e->win, x, y, color * 2.5);
+			if ((color = is_dchirol(x, y) >= 0))
+				mlx_pixel_put(e->image, e->win, x, y, color);
+			min.x += step;
 			x++;
 		}
+		min.y += step;
 		y++;
 	}
 }
 
-void	ft_julia(t_env *e, float min, float max, t_cplx c)
+void	ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c)
 {
 	float	step;
+	float	tmp;
 	float	x;
 	float	y;
 	int		color;
 
-	step = (max - min) / WINX;
+	step = (max.x - min.x) / WINX;
+	tmp = min.x;
 	y = 0;
-	while (y < WINY)
+	while (min.y < max.y)
 	{
 		x = 0;
-		while (x < WINX)
+		min.x = tmp;
+		while (min.x < max.x)
 		{
-			if ((color = is_infinite(cplx_new(min + (step * x),
-				min + (step * y)), c)) >= 0)
-				mlx_pixel_put(e->image, e->win, x, y, color * 2.5);
+			if ((color = is_infinite(cplx_new(min.x + (step * x),
+				min.y + (step * y)), c)) >= 0)
+				mlx_pixel_put(e->image, e->win, x, y, color);
+			min.x += step;
 			x++;
 		}
+		min.y += step;
 		y++;
 	}
 }

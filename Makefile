@@ -6,13 +6,13 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/06/01 16:44:38 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/04 17:28:56 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	fractol
 CC			=	gcc
-CFLAGS		=	-Werror -Wall -Wextra
+CFLAGS		=	-Werror -Wall -Wextra -Ofast
 CFLAGSMLX	=	-lmlx -framework OpenGL -framework AppKit
 
 LIB_PATH	=	libft
@@ -25,7 +25,7 @@ INC_DIR		=	includes
 INCS		=	-I $(INC_DIR) -I $(LIB_PATH)
 
 SRC_DIR		=	srcs
-SRC			=	main.c mendelbrot.c
+SRC			=	main.c mendelbrot.c error.c
 
 OBJ_DIR		=	obj
 
