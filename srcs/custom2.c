@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 21:03:06 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 21:09:45 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 21:32:49 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void			custom2_calc(t_env *e, t_pnt *min)
 	e->i = 0;
 	while (e->i < ITER_MAX && cplx_mod(cplx_mul(z, z)) <= 4)
 	{
-		z = cplx_add(cplx_mul(cplx_mul(z, cplx_mul(cplx_mul(z, z), z)), cplx_mul(z, z)), cplx_new(min->x, min->y));
+		z = cplx_add(cplx_mul(cplx_mul(z, cplx_mul(cplx_mul(z, z), z)),
+			cplx_mul(z, z)), cplx_new(min->x, min->y));
 		e->i++;
 	}
 	if (e->i != ITER_MAX)
