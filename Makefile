@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/06/04 17:28:56 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/05 18:48:06 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ INC_DIR		=	includes
 INCS		=	-I $(INC_DIR) -I $(LIB_PATH)
 
 SRC_DIR		=	srcs
-SRC			=	main.c mendelbrot.c error.c
+SRC			=	main.c mendelbrot.c error.c movements.c \
+				julia.c zoom.c
 
 OBJ_DIR		=	obj
 

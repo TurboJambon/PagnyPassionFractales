@@ -1,27 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   movements.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/03 17:58:04 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 18:44:21 by dchirol          ###   ########.fr       */
+/*   Created: 2017/06/05 17:34:14 by dchirol           #+#    #+#             */
+/*   Updated: 2017/06/05 18:55:52 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	input_error(void)
+void		ft_movexr(t_env *e)
 {
-	ft_putstr_fd(
-	"/!\\ Input error, please type one of the following /!\\\n"
-	, 2);
-	ft_putstr_fd("julia - mendelbrot\n", 2);
+	e->p1.x += 0.1 / e->move_x;
+	e->p2.x += 0.1 / e->move_x;
 }
 
-int		window_error(void)
+void		ft_movexl(t_env *e)
 {
-	ft_putstr_fd("Minilibx failed to open a window\n", 2);
-	return (-1);
+	e->p1.x -= 0.1 / e->move_x;
+	e->p2.x -= 0.1 / e->move_x;
+}
+
+void		ft_moveyu(t_env *e)
+{
+	e->p1.y += 0.1 / e->move_x;
+	e->p2.y += 0.1 / e->move_x;
+}
+
+void		ft_moveyd(t_env *e)
+{
+	e->p1.y -= 0.1 / e->move_x;
+	e->p2.y -= 0.1 / e->move_x;
 }
