@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:21:08 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 21:32:35 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 21:46:35 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int		main(int ac, char **av)
 {
 	t_env	e;
 
-	if (ac < 2)
+	if (ac != 2)
 	{
 		input_error();
 		return (0);
