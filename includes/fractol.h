@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:54:21 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 20:52:04 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 21:04:22 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,10 @@ int				key_hook_j(int keycode, t_env *e);
 void			ft_custom1(t_env *e, t_pnt min, t_pnt max);
 int				key_hook_c1(int keycode, t_env *e);
 int				mouse_hook_c1(int button, int x, int y, t_env *e);
+
+void			ft_custom2(t_env *e, t_pnt min, t_pnt max);
+int				key_hook_c2(int keycode, t_env *e);
+int				mouse_hook_c2(int button, int x, int y, t_env *e);
 
 void			input_error(void);
 int				window_error(void);

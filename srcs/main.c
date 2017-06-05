@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:21:08 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 20:56:40 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 21:10:31 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	choose_fractal(char *av, t_env *e)
 	{
 		e->new_x = 0.285;
 		e->new_y = 0.013;
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		//ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
 		mlx_mouse_hook(e->win, mouse_hook_j, e);
 		mlx_hook(e->win, 6, 3, mouse_julia, e);
 		mlx_hook(e->win, 2, 3, key_hook_j, e);
@@ -53,6 +53,12 @@ void	choose_fractal(char *av, t_env *e)
 		mlx_mouse_hook(e->win, mouse_hook_c1, e);
 		mlx_hook(e->win, 2, 3, key_hook_c1, e);
 	}
+	else if (ft_strcmp("Snowflake", av) == 0)
+	{
+		ft_custom2(e, e->p1, e->p2);
+		mlx_mouse_hook(e->win, mouse_hook_c2, e);
+		mlx_hook(e->win, 2, 3, key_hook_c2, e);
+	}
 }
 
 int		main(int ac, char **av)
@@ -66,7 +72,8 @@ int		main(int ac, char **av)
 	}
 	if (ft_strcmp("Julia", av[1]) == 0 ||
 		ft_strcmp("Mandelbrot", av[1]) == 0 ||
-		ft_strcmp("DoubleBrot", av[1]) == 0)
+		ft_strcmp("DoubleBrot", av[1]) == 0 ||
+		ft_strcmp("Snowflake", av[1]) == 0)
 	{
 		choose_fractal(av[1], &e);
 		mlx_loop(e.mlx);

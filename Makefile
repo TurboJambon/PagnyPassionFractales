@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/06/05 20:57:29 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/05 21:04:32 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,7 @@ INCS		=	-I $(INC_DIR) -I $(LIB_PATH)
 
 SRC_DIR		=	srcs
 SRC			=	main.c mendelbrot.c error.c movements.c \
-				julia.c zoom.c utilities.c custom1.c
+				julia.c zoom.c utilities.c custom1.c custom2.c
 
 OBJ_DIR		=	obj
 

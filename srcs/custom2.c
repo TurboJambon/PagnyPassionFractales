@@ -1,76 +1,68 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   custom2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/06/05 18:39:24 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 21:01:13 by dchirol          ###   ########.fr       */
+/*   Created: 2017/06/05 21:03:06 by dchirol           #+#    #+#             */
+/*   Updated: 2017/06/05 21:09:45 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		mouse_hook_j(int button, int x, int y, t_env *e)
+int				mouse_hook_c2(int button, int x, int y, t_env *e)
 {
 	if (button == 4)
 	{
 		ft_zoom(x, y, e);
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		ft_custom2(e, e->p1, e->p2);
 	}
 	if (button == 5)
 	{
 		ft_dezoom(x, y, e);
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		ft_custom2(e, e->p1, e->p2);
 	}
 	return (0);
 }
 
-int		mouse_julia(int x, int y, t_env *e)
-{
-	e->new_x = ((double)x / WINX) * (e->p2.x - e->p1.x) + e->p1.x;
-	e->new_y = ((double)y / WINY) * (e->p2.y - e->p1.y) + e->p1.y;
-	ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
-	return (0);
-}
-
-int		key_hook_j(int keycode, t_env *e)
+int				key_hook_c2(int keycode, t_env *e)
 {
 	if (keycode == 53)
 		exit(0);
 	else if (keycode == KEY_RIGHT)
 	{
 		ft_movexr(e);
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		ft_custom2(e, e->p1, e->p2);
 	}
 	else if (keycode == KEY_LEFT)
 	{
 		ft_movexl(e);
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		ft_custom2(e, e->p1, e->p2);
 	}
 	else if (keycode == KEY_DOWN)
 	{
 		ft_moveyd(e);
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		ft_custom2(e, e->p1, e->p2);
 	}
 	else if (keycode == KEY_UP)
 	{
 		ft_moveyu(e);
-		ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
+		ft_custom2(e, e->p1, e->p2);
 	}
 	return (0);
 }
 
-void	julia_calc(t_env *e, t_pnt *min, t_cplx c)
+void			custom2_calc(t_env *e, t_pnt *min)
 {
 	t_cplx	z;
 
-	z = cplx_new(min->x, min->y);
+	z = cplx_new(0, 0);
 	e->i = 0;
-	while (e->i < ITER_MAX && ((z.re * z.re) + (z.im * z.im)) <= 4)
+	while (e->i < ITER_MAX && cplx_mod(cplx_mul(z, z)) <= 4)
 	{
-		z = cplx_add(cplx_mul(z, z), c);
+		z = cplx_add(cplx_mul(cplx_mul(z, cplx_mul(cplx_mul(z, z), z)), cplx_mul(z, z)), cplx_new(min->x, min->y));
 		e->i++;
 	}
 	if (e->i != ITER_MAX)
@@ -78,7 +70,7 @@ void	julia_calc(t_env *e, t_pnt *min, t_cplx c)
 		+ 1 - log(log(4) / log(z.re * z.re + z.im * z.im)) / log(2)));
 }
 
-void	ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c)
+void			ft_custom2(t_env *e, t_pnt min, t_pnt max)
 {
 	double	step;
 	double	tmp;
@@ -89,15 +81,15 @@ void	ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c)
 	e->y = 0;
 	while (min.y < max.y)
 	{
-		e->x = 0;
 		min.x = tmp;
+		e->x = 0;
 		while (min.x < max.x)
 		{
-			julia_calc(e, &min, c);
+			custom2_calc(e, &min);
 			min.x += step;
 			e->x++;
 		}
-		min.y += step;
 		e->y++;
+		min.y += step;
 	}
 }
