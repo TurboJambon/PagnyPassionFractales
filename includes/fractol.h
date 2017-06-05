@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:54:21 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 19:01:15 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:27:15 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,17 @@
 # include <mlx.h>
 # include <stdlib.h>
 
-# define WINX 		700
-# define WINY 		700
-# define ITER_MAX 	80
+# define RED   			"\x1B[31m"
+# define GRN   			"\x1B[32m"
+# define YEL   			"\x1B[33m"
+# define BLU   			"\x1B[34m"
+# define MAG   			"\x1B[35m"
+# define CYN   			"\x1B[1;96m"
+# define RESET 			"\x1B[0m"
+
+# define WINX 		500
+# define WINY 		500
+# define ITER_MAX 	60
 
 # define KEY_LEFT	123
 # define KEY_DOWN	125
@@ -55,6 +63,8 @@ typedef struct	s_env
 	float	move_x;
 	float	move_y;
 	int		i;
+	float	x;
+	float	y;
 }				t_env;
 
 t_cplx			cplx_new(float re, float im);
@@ -74,6 +84,10 @@ void			ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c);
 int				mouse_hook_j(int button, int x, int y, t_env *e);
 int 			mouse_julia(int x, int y, t_env *e);
 int				key_hook_j(int keycode, t_env *e);
+
+void			ft_custom1(t_env *e, t_pnt min, t_pnt max);
+int				key_hook_c1(int keycode, t_env *e);
+int				mouse_hook_c1(int button, int x, int y, t_env *e);
 
 void			input_error(void);
 int				window_error(void);

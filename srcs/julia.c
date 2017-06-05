@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 18:39:24 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 19:01:14 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:30:30 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,38 +62,42 @@ int		key_hook_j(int keycode, t_env *e)
 	return (0);
 }
 
-void	ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c)
+void	julia_calc(t_env *e, t_pnt *min, t_cplx c)
 {
 	t_cplx	z;
+
+	z = cplx_new(min->x, min->y);
+	e->i = 0;
+	while (e->i < ITER_MAX && ((z.re * z.re) + (z.im * z.im)) <= 4)
+	{
+		z = cplx_add(cplx_mul(z, z), c);
+		e->i++;
+	}
+	if (e->i != ITER_MAX)
+		mlx_pixel_put(e->image, e->win, e->x, e->y, ft_getcolor((float)e->i
+		+ 1 - log(log(4) / log(z.re * z.re + z.im * z.im)) / log(2)));
+}
+
+void	ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c)
+{
 	float	step;
 	float	tmp;
-	float	x;
-	float	y;
 
 	mlx_clear_window(e->mlx, e->win);
 	step = (max.x - min.x) / WINX;
 	tmp = min.x;
-	y = 0;
+	e->y = 0;
 	while (min.y < max.y)
 	{
-		x = 0;
+		e->x = 0;
 		min.x = tmp;
 		while (min.x < max.x)
 		{
-			z = cplx_new(min.x, min.y);
-			e->i = 0;
-			while (e->i < ITER_MAX && ((z.re * z.re) + (z.im * z.im)) <= 4)
-			{
-				z = cplx_add(cplx_mul(z, z), c);
-				e->i++;
-			}
-			if (e->i != ITER_MAX)
-				mlx_pixel_put(e->image, e->win, x, y, ft_getcolor((float)e->i
-				+ 1 - log(log(4) / log(z.re * z.re + z.im * z.im)) / log(2)));
+			julia_calc(e, &min, c);
 			min.x += step;
-			x++;
+			e->x++;
 		}
 		min.y += step;
-		y++;
+		e->y++;
 	}
 }
