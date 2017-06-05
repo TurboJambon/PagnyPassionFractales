@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 18:39:24 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 20:30:30 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:55:30 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int		mouse_hook_j(int button, int x, int y, t_env *e)
 
 int		mouse_julia(int x, int y, t_env *e)
 {
-	e->new_x = ((float)x / WINX) * (e->p2.x - e->p1.x) + e->p1.x;
-	e->new_y = ((float)y / WINY) * (e->p2.y - e->p1.y) + e->p1.y;
+	e->new_x = ((double)x / WINX) * (e->p2.x - e->p1.x) + e->p1.x;
+	e->new_y = ((double)y / WINY) * (e->p2.y - e->p1.y) + e->p1.y;
 	ft_julia(e, e->p1, e->p2, cplx_new(e->new_x, e->new_y));
 	return (0);
 }
@@ -74,14 +74,14 @@ void	julia_calc(t_env *e, t_pnt *min, t_cplx c)
 		e->i++;
 	}
 	if (e->i != ITER_MAX)
-		mlx_pixel_put(e->image, e->win, e->x, e->y, ft_getcolor((float)e->i
+		mlx_pixel_put(e->image, e->win, e->x, e->y, ft_getcolor((double)e->i
 		+ 1 - log(log(4) / log(z.re * z.re + z.im * z.im)) / log(2)));
 }
 
 void	ft_julia(t_env *e, t_pnt min, t_pnt max, t_cplx c)
 {
-	float	step;
-	float	tmp;
+	double	step;
+	double	tmp;
 
 	mlx_clear_window(e->mlx, e->win);
 	step = (max.x - min.x) / WINX;

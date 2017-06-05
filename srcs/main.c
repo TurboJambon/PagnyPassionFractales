@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:21:08 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 20:39:37 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:56:40 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	choose_fractal(char *av, t_env *e)
 		ft_custom1(e, e->p1, e->p2);
 		mlx_mouse_hook(e->win, mouse_hook_c1, e);
 		mlx_hook(e->win, 2, 3, key_hook_c1, e);
-	}	
+	}
 }
 
 int		main(int ac, char **av)
@@ -65,12 +65,12 @@ int		main(int ac, char **av)
 		return (0);
 	}
 	if (ft_strcmp("Julia", av[1]) == 0 ||
-		ft_strcmp("Mandelbrot", av[1]) == 0||
+		ft_strcmp("Mandelbrot", av[1]) == 0 ||
 		ft_strcmp("DoubleBrot", av[1]) == 0)
-		{
-			choose_fractal(av[1], &e);
-			mlx_loop(e.mlx);
-		}
+	{
+		choose_fractal(av[1], &e);
+		mlx_loop(e.mlx);
+	}
 	else
 		input_error();
 	return (0);

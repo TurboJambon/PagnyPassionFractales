@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/18 16:55:07 by niragne           #+#    #+#              #
-#    Updated: 2017/06/05 20:27:07 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/05 20:57:29 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,10 @@ OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME): lib $(OBJS)
+$(NAME): $(LIB) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(CFLAGSMLX) $(LIB) $(LIBCPL)
 
-lib:
+$(LIB):
 	make -C $(LIB_PATH)
 	make -C $(LIBCPL_PATH)
 

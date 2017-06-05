@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 16:14:33 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 20:30:06 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:48:14 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,14 @@ void			mendel_calc(t_env *e, t_pnt *min)
 		e->i++;
 	}
 	if (e->i != ITER_MAX)
-		mlx_pixel_put(e->image, e->win, e->x, e->y, ft_getcolor((float)e->i
+		mlx_pixel_put(e->image, e->win, e->x, e->y, ft_getcolor((double)e->i
 		+ 1 - log(log(4) / log(z.re * z.re + z.im * z.im)) / log(2)));
 }
 
 void			ft_mendelbrot(t_env *e, t_pnt min, t_pnt max)
 {
-	float	step;
-	float	tmp;
+	double	step;
+	double	tmp;
 
 	mlx_clear_window(e->mlx, e->win);
 	step = (max.x - min.x) / WINX;

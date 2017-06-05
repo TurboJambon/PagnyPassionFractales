@@ -6,13 +6,13 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/05 19:18:13 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 20:27:10 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:55:28 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-unsigned int	ft_getcolor(float i)
+unsigned int	ft_getcolor(double i)
 {
 	i = log(ITER_MAX - i) / log(ITER_MAX / 2.55) * 4.997083;
 	if (i >= 0 && i < 1)

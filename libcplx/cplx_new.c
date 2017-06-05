@@ -6,13 +6,13 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:03:53 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/01 18:13:59 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/05 20:50:42 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_cplx	cplx_new(float re, float im)
+t_cplx	cplx_new(double re, double im)
 {
 	t_cplx z;
 
