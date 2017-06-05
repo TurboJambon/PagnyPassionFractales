@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/01 15:30:23 by dchirol           #+#    #+#              #
-#    Updated: 2017/06/01 15:43:07 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/05 13:43:27 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME	=	libcplx.a
 SRC		=	cplx_add.c \
 			cplx_sub.c \
 			cplx_mul.c \
-			cplx_new.c
+			cplx_new.c \
+			cplx_mod.c
 
 OBJ		=	$(SRC:.c=.o)
 
