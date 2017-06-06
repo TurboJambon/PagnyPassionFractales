@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 21:04:32 by dchirol           #+#    #+#              #
-#    Updated: 2017/06/06 11:52:09 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/06 12:08:51 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) $(INCS) -c -o $@ $<
 
 clean:
+	rm -f $(OBJS)
 	make -C $(LIB_PATH) clean
 	make -C $(LIBCPL_PATH) clean
 

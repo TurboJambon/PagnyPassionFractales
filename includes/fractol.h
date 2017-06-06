@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:54:21 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 21:04:22 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/06 12:08:55 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define CYN   			"\x1B[1;96m"
 # define RESET 			"\x1B[0m"
 
-# define WINX 		450
-# define WINY 		450
-# define ITER_MAX 	80
+# define WINX 		500
+# define WINY 		500
+# define ITER_MAX 	100
 
 # define KEY_LEFT	123
 # define KEY_DOWN	125
