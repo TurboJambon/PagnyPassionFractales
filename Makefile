@@ -6,7 +6,7 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 21:04:32 by dchirol           #+#    #+#              #
-#    Updated: 2017/06/06 11:47:33 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/06 11:52:09 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC_DIR		=	srcs
 SRC			=	main.c mendelbrot.c error.c movements.c \
 				julia.c zoom.c utilities.c custom1.c custom2.c
 
-OBJ_DIR		=	obj
+OBJ_DIR		=	srcs
 
 SRCS		=	$(addprefix $(SRC_DIR)/, $(SRC))
 OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
@@ -36,7 +36,7 @@ OBJS		=	$(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 
 all: $(NAME)
 
-$(NAME): mkdir obj $(LIB) $(OBJS)
+$(NAME): $(LIB) $(OBJS)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(CFLAGSMLX) $(LIB) $(LIBCPL)
 
 $(LIB):
@@ -49,7 +49,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 clean:
 	make -C $(LIB_PATH) clean
 	make -C $(LIBCPL_PATH) clean
-	rm -f $(OBJS)
 
 fclean: clean
 	rm -f $(LIB)
