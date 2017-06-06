@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/03 17:58:04 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/06 12:05:02 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/06 13:30:57 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	input_error(void)
 	ft_putstr_fd("-- \t\tMandelbrot\n", 1);
 	ft_putstr_fd("-- \t\tDoubleBrot\n", 1);
 	ft_putstr_fd("-- \t\tSnowflake\n", 1);
+	ft_putstr_fd("-- \t\tMega\n", 1);
+	ft_putstr_fd("-- \t\tTeardrop\n", 1);
 	ft_putstr_fd(RESET, 1);
 }
 

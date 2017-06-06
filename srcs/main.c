@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 15:21:08 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/05 21:46:35 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/06 13:36:48 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,22 @@ void	choose_fractal2(char *av, t_env *e)
 		ft_custom2(e, e->p1, e->p2);
 		mlx_mouse_hook(e->win, mouse_hook_c2, e);
 		mlx_hook(e->win, 2, 3, key_hook_c2, e);
+	}
+	else if (ft_strcmp("Mega", av) == 0)
+	{
+		ft_custom3(e, e->p1, e->p2);
+		mlx_mouse_hook(e->win, mouse_hook_c3, e);
+		mlx_hook(e->win, 2, 3, key_hook_c3, e);
+	}
+	else if (ft_strcmp("Teardrop", av) == 0)
+	{
+		e->p1.x = -3;
+		e->p1.y = -3;
+		e->p2.x = 6;
+		e->p2.y = 6;
+		ft_teardrop(e, e->p1, e->p2);
+		mlx_mouse_hook(e->win, mouse_hook_b, e);
+		mlx_hook(e->win, 2, 3, key_hook_b, e);
 	}
 }
 
@@ -79,7 +95,9 @@ int		main(int ac, char **av)
 	if (ft_strcmp("Julia", av[1]) == 0 ||
 		ft_strcmp("Mandelbrot", av[1]) == 0 ||
 		ft_strcmp("DoubleBrot", av[1]) == 0 ||
-		ft_strcmp("Snowflake", av[1]) == 0)
+		ft_strcmp("Snowflake", av[1]) == 0 ||
+		ft_strcmp("Mega", av[1]) == 0 ||
+		ft_strcmp("Teardrop", av[1]) == 0)
 	{
 		choose_fractal(av[1], &e);
 		mlx_loop(e.mlx);

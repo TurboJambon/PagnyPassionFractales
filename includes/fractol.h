@@ -6,7 +6,7 @@
 /*   By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/01 14:54:21 by dchirol           #+#    #+#             */
-/*   Updated: 2017/06/06 12:08:55 by dchirol          ###   ########.fr       */
+/*   Updated: 2017/06/06 13:30:35 by dchirol          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 # define CYN   			"\x1B[1;96m"
 # define RESET 			"\x1B[0m"
 
-# define WINX 		500
-# define WINY 		500
-# define ITER_MAX 	100
+# define WINX 		450
+# define WINY 		450
+# define ITER_MAX 	80
 
 # define KEY_LEFT	123
 # define KEY_DOWN	125
@@ -74,6 +74,7 @@ double			cplx_mod(t_cplx p1);
 
 unsigned int	ft_getcolor(double i);
 int				is_infinite(t_cplx z, t_cplx c);
+t_cplx			ft_cplxpow(t_cplx z, int pow);
 
 void			ft_mendelbrot(t_env *e, t_pnt min, t_pnt max);
 int				mouse_hook_m(int button, int x, int y, t_env *e);
@@ -91,6 +92,14 @@ int				mouse_hook_c1(int button, int x, int y, t_env *e);
 void			ft_custom2(t_env *e, t_pnt min, t_pnt max);
 int				key_hook_c2(int keycode, t_env *e);
 int				mouse_hook_c2(int button, int x, int y, t_env *e);
+
+int				mouse_hook_c3(int button, int x, int y, t_env *e);
+int				key_hook_c3(int keycode, t_env *e);
+void			ft_custom3(t_env *e, t_pnt min, t_pnt max);
+
+int				mouse_hook_b(int button, int x, int y, t_env *e);
+int				key_hook_b(int keycode, t_env *e);
+void			ft_teardrop(t_env *e, t_pnt min, t_pnt max);
 
 void			input_error(void);
 int				window_error(void);
