@@ -6,13 +6,13 @@
 #    By: dchirol <dchirol@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/05 21:04:32 by dchirol           #+#    #+#              #
-#    Updated: 2017/06/05 21:43:14 by dchirol          ###   ########.fr        #
+#    Updated: 2017/06/06 11:41:29 by dchirol          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	fractol
 CC			=	gcc
-CFLAGS		=	-Werror -Wall -Wextra -Ofast
+CFLAGS		=	-Werror -Wall -Wextra
 CFLAGSMLX	=	-lmlx -framework OpenGL -framework AppKit
 
 LIB_PATH	=	libft
